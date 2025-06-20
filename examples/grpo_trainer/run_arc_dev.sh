@@ -5,15 +5,15 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$HOME/nethome-us-south-3/lukehg/datasets/build-arc-datasets/train.parquet \
-    data.val_files=$HOME/nethome-us-south-3/lukehg/datasets/build-arc-datasets/test.parquet \
+    data.train_files=$HOME/nethome-us-south-3/lukehg/datasets/arc-2025-parquet/train.parquet \
+    data.val_files=$HOME/nethome-us-south-3/lukehg/datasets/arc-2025-parquet/test.parquet \
     data.train_batch_size=16 \
     data.val_batch_size=16 \
-    data.max_prompt_length=8192 \
+    data.max_prompt_length=4096 \
     data.max_response_length=4096 \
     data.filter_overlong_prompts=True \
     data.truncation='error' \
-    actor_rollout_ref.model.path=Qwen/Qwen3-8B \
+    actor_rollout_ref.model.path=Qwen/Qwen3-1.7B \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.actor.ppo_mini_batch_size=16 \
@@ -36,7 +36,7 @@ python3 -m verl.trainer.main_ppo \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
     trainer.project_name='verl_grpo_example_gsm8k' \
-    trainer.experiment_name='qwen3_8b_dev' \
+    trainer.experiment_name='qwen3_1.7b_dev' \
     trainer.n_gpus_per_node=4 \
     trainer.nnodes=1 \
     trainer.save_freq=20 \
