@@ -10,7 +10,7 @@ python3 -m verl.trainer.main_ppo \
     data.train_batch_size=16 \
     data.val_batch_size=16 \
     data.max_prompt_length=4096 \
-    data.max_response_length=4096 \
+    data.max_response_length=16384 \
     data.filter_overlong_prompts=True \
     data.truncation='error' \
     actor_rollout_ref.model.path=Qwen/Qwen3-1.7B \
