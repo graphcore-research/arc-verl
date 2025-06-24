@@ -5,14 +5,14 @@ import ast
 
 def try_parse_numpy_array(s):
     try:
-        parsed = ast.literal_eval(s)
+        parsed = ast.literal_eval(str(s))
         if isinstance(parsed, (list, tuple)):
             return np.array(parsed)
         if isinstance(parsed, np.ndarray):
             return parsed
         return None
     
-    except:
+    except Exception as e:
         return None
 
 
@@ -57,7 +57,7 @@ def compute_score(solution_str, ground_truth, format_score=0.0, score=1.0):
     except Exception as e:
         reward = 0
 
-    # print(f"REWARD: {reward}")
+    print(f"REWARD: {reward}")
 
     return reward
 
